@@ -21,8 +21,8 @@ def evaluate():
     
     acceptable = rdf_type in accepted_types
     
-    #to ensure it shows up on all pages
-    acceptable = True
+    # #to ensure it shows up on all pages
+    # acceptable = True
     ################## END SECTION ####################################
     
     if acceptable:
@@ -41,8 +41,10 @@ def run():
         shutil.rmtree(temp_dir, ignore_errors=True)
     except:
         print("No To_zip exists currently")
-        
-
+    
+    #make temp_dir directory
+    os.makedirs(temp_dir)
+    
     data = request.get_json(force=True)
     url = data['complete_sbol'].replace('/sbol','')
     instance = data['instanceUrl']
@@ -63,15 +65,16 @@ def run():
         
         #write out file
         out_name = "Out.html"
-        filename = os.path.join(temp_dir, out_name)
+        filename = os.path.join(cwd, 'temp_dir', out_name)
         with open(filename, 'w') as out_file:
-            result = out_file.read()
+            out_file.write(result)
         
         #this file could be a zip archive or any path and file name relative to temp_dir
         download_file_name = out_name
         ################## END SECTION ####################################
         
         return send_from_directory(temp_dir,download_file_name)
+        # return("Hello")
         
         #clear temp_dir directory
         shutil.rmtree(temp_dir, ignore_errors=True)
