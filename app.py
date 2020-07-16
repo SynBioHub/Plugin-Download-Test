@@ -45,10 +45,14 @@ def run():
     #make temp_dir directory
     os.makedirs(temp_dir)
     
-    data = request.get_json(force=True)
-    url = data['complete_sbol'].replace('/sbol','')
-    instance = data['instanceUrl']
-    uri = data['top_level']
+    top_level_url = data['top_level']
+    complete_sbol = data['complete_sbol']
+    instance_url = data['instanceUrl']
+    size = data['size']
+    rdf_type = data['type']
+    shallow_sbol = data['shallow_sbol']
+    
+    url = complete_sbol.replace('/sbol','')
     
     try:
         ########## REPLACE THIS SECTION WITH OWN RUN CODE #################
@@ -59,8 +63,8 @@ def run():
             
         #put in the url, uri, and instance given by synbiohub
         result = result.replace("URL_REPLACE", url)
-        result = result.replace("URI_REPLACE", uri)
-        result = result.replace("INSTANCE_REPLACE", instance)
+        result = result.replace("URI_REPLACE", top_level_url)
+        result = result.replace("INSTANCE_REPLACE", instance_url)
         result = result.replace("REQUEST_REPLACE", str(data))
         
         #write out file
