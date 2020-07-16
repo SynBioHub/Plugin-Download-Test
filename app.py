@@ -14,7 +14,7 @@ def evaluate():
     
     ########## REPLACE THIS SECTION WITH OWN RUN CODE #################
     #uses rdf types
-    accepted_types = {'Agent', 'Association', 'Attachment', 'Collection',
+    accepted_types = {'Activity', 'Agent', 'Association', 'Attachment', 'Collection',
                       'CombinatorialDerivation', 'ComponentInstance',
                       'Cut', 'Experiment', 'ExperimentalData',
                       'FunctionalComponent','GenericLocation',
@@ -22,7 +22,7 @@ def evaluate():
                       'MapsTo', 'Measure', 'Model', 'ModuleInstance',
                       'Participation', 'Plan', 'Range', 'Sequence',
                       'SequenceAnnotation', 'SequenceConstraint',
-                      'Usage', 'VariableComponent', 'Activity'}
+                      'Usage', 'VariableComponent'}
     
     acceptable = rdf_type in accepted_types
     
