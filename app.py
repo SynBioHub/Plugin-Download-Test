@@ -14,10 +14,15 @@ def evaluate():
     
     ########## REPLACE THIS SECTION WITH OWN RUN CODE #################
     #uses rdf types
-    accepted_types = {'Attachment', 'Collection', 'CombinatorialDerivation',
-                      'Component', 'Constraint', 'ExperimentalData',
-                      'Implementation', 'Interaction', 'Model', 'prov:Activity',
-                      'prov:Agent', 'Sequence', 'SequenceFeature'}
+    accepted_types = {'Agent', 'Association', 'Attachment', 'Collection',
+                      'CombinatorialDerivation', 'ComponentInstance',
+                      'Cut', 'Experiment', 'ExperimentalData',
+                      'FunctionalComponent','GenericLocation',
+                      'Implementation', 'Interaction', 'Location',
+                      'MapsTo', 'Measure', 'Model', 'ModuleInstance',
+                      'Participation', 'Plan', 'Range', 'Sequence',
+                      'SequenceAnnotation', 'SequenceConstraint',
+                      'Usage', 'VariableComponent', 'Activity'}
     
     acceptable = rdf_type in accepted_types
     
