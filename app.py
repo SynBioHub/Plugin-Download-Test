@@ -55,6 +55,7 @@ def run():
     top_level_url = data['top_level']
     complete_sbol = data['complete_sbol']
     instance_url = data['instanceUrl']
+    genbank_url = data['genbank']
     size = data['size']
     rdf_type = data['type']
     shallow_sbol = data['shallow_sbol']
