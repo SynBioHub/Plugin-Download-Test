@@ -45,7 +45,7 @@ def run():
     try:
         shutil.rmtree(temp_dir, ignore_errors=True)
     except:
-        print("No To_zip exists currently")
+        print("No temp_dir exists currently")
     
     #make temp_dir directory
     os.makedirs(temp_dir)
