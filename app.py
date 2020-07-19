@@ -85,7 +85,7 @@ def run():
         download_file_name = out_name
         ################## END SECTION ####################################
         
-        return send_from_directory(temp_dir,download_file_name)
+        return send_from_directory(temp_dir,download_file_name, as_attachment=True)
         # return("Hello")
         
         #clear temp_dir directory
