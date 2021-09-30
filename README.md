@@ -1,5 +1,5 @@
 # Plugin-Download-Test
-A very small test plugin to test the download interface is working for SynBioHub. Could be the basis for python based download plugins.
+A very small test plugin to test the download interface is working for SynBioHub. Could be the basis for python based download plugins. You can use this repo as a template.
 
 # Install
 ## Using docker
