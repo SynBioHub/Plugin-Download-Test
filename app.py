@@ -76,7 +76,7 @@ def run():
         result = result.replace("INSTANCE_REPLACE", instance_url)
         result = result.replace("REQUEST_REPLACE", str(data))
         result = result.replace("GENBANK_REPLACE", genbank_url)
-        result = result.replace("SIZE_REPLACE", size)
+        result = result.replace("SIZE_REPLACE", str(size))
         result = result.replace("RDFTYPE_REPLACE", rdf_type)
         result = result.replace("SHALLOWSBOL_REPLACE", shallow_sbol)
 
