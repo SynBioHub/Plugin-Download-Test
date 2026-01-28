@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM synbiohub/docker-base-python:snapshot
 
 WORKDIR /app
 
