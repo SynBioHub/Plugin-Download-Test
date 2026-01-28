@@ -92,8 +92,8 @@ def run():
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ END SECTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         return send_from_directory(temp_dir.name, download_file_name,
-                                   as_attachment=True,
-                                   attachment_filename=out_name)
+                       as_attachment=True,
+                       download_name=out_name)
 
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
