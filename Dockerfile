@@ -1,15 +1,11 @@
 FROM synbiohub/docker-base-python:snapshot
 
-WORKDIR /app
-
-COPY requirements.txt .
-
-RUN pip install --no-cache-dir -r requirements.txt
-
 COPY . .
 
 EXPOSE 5000
 
+RUN pip3 install -r requirements.txt
+
 ENV FLASK_APP=app.py
 
-CMD ["waitress-serve", "--port=5000", "app:app"]
+CMD ["waitress-serve", "--port=5000", "app:app" ]
