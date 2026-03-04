@@ -3,6 +3,7 @@ import os
 import tempfile
 import sys
 import traceback
+import requests
 
 
 app = Flask(__name__)
@@ -60,6 +61,9 @@ def run():
     size = data['size']
     rdf_type = data['type']
     shallow_sbol = data['shallow_sbol']
+    token = data['token']
+    if token is None:
+        token = 'null'
 
     url = complete_sbol.replace('/sbol', '')
 
@@ -70,10 +74,18 @@ def run():
         with open(file_in_name, 'r') as htmlfile:
             result = htmlfile.read()
 
+
+        if token != 'null':
+            response = requests.get(url, headers={'Accept': 'text/plain', 'X-authorization': token })
+        else:
+            response = requests.get(url, headers={'Accept': 'text/plain'})
+
         # put in the url, uri, and instance given by synbiohub
         result = result.replace("URL_REPLACE", url)
         result = result.replace("URI_REPLACE", top_level_url)
         result = result.replace("INSTANCE_REPLACE", instance_url)
+        result = result.replace("TOKEN_REPLACE", token)
+        result = result.replace("RESPONSE_CODE_REPLACE", str(response.status_code))
         result = result.replace("REQUEST_REPLACE", str(data))
         result = result.replace("GENBANK_REPLACE", genbank_url)
         result = result.replace("SIZE_REPLACE", str(size))
@@ -99,4 +111,5 @@ def run():
         exc_type, exc_obj, exc_tb = sys.exc_info()
         fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
         lnum = exc_tb.tb_lineno
+        print(f'Exception is: {e}, exc_type: {exc_type}, exc_obj: {exc_obj}, fname: {fname}, line_number: {lnum}, traceback: {traceback.format_exc()}', flush=True)
         abort(400, f'Exception is: {e}, exc_type: {exc_type}, exc_obj: {exc_obj}, fname: {fname}, line_number: {lnum}, traceback: {traceback.format_exc()}')
